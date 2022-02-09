@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+
+nav ul li {
+  list-style: none;
+  display: inline;
+}
