@@ -8,10 +8,12 @@ async function getHero() {
 
   try {
     const response = await fetch(heroUrl);
-    const products = await response.json();
-    console.log(products);
+    const home = await response.json();
+    console.log(home);
     
-    container.innerHTML += `<img src="${products.hero_banner}"</img>`;
+    container.innerHTML += `<p>${home.published_at}</p>
+                            <p>${home.hero_banner_alt_text}</p>
+                            `;
     
   } catch(error) {
     console.log(error);
