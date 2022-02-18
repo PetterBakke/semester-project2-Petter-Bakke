@@ -1,0 +1,46 @@
+.product-container {
+  margin-top: 20px;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  // /* gap: 10px; */
+  /* gap: 10px 20px; */
+  /* row-gap: 20px; */
+  // column-gap: 20px;
+  // flex-direction: column;
+  flex-wrap: wrap;
+}
+
+// .container {
+//   width: 100%;
+//   height: 100%;
+//   float: center;
+//   margin-left: 5px;
+//   display: flex;
+//   flex-direction: column;
+//   // flex-wrap: wrap;
+// }
+
+.cards {
+  max-height: 100%;
+  max-width: 100%;
+  border: 10px solid black;
+  border-radius: 0px 15px 0px 15px;
+  padding: 0;
+  margin-top: 10px;
+  text-align: center;
+  padding: 5px;
+  // flex-wrap: wrap;
+}
+
+.div-pic {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.prodImg {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}

@@ -1,24 +1,49 @@
 import { displayMessage } from "./components/displayMessage.js";
-
-const heroUrl = "http://localhost:1337/home";
-// const featured = document.querySelector(".featured-products");
+const baseUrl = "http://localhost:1337";
+const heroUrl =  baseUrl + "/home";
+const featureUrl = baseUrl + "/products";
 
 async function getHero() {
+  // const featured = document.querySelector(".featured-products");
   const container = document.querySelector(".hero");
 
   try {
     const response = await fetch(heroUrl);
     const home = await response.json();
     console.log(home);
+
+    container.innerHTML = "";
     
-    container.innerHTML += `<p>${home.published_at}</p>
-                            <p>${home.hero_banner_alt_text}</p>
-                            `;
+    container.innerHTML += `<div class="header">
+    <img src="${baseUrl}${home.hero_banner.url}" class="hero-banner" alt="${home.hero_banner_alt_text}">
+    </div>`;
     
   } catch(error) {
     console.log(error);
-    displayMessage("error", error, ".featured-products");
+    displayMessage("error", error, ".hero");
   }
 };
 
 getHero();
+
+// async function featureProds() {
+//   const featured = document.querySelector(".featured-products");
+
+//   try {
+//     const response = await fetch(featureUrl);
+//     const feat = await response.json();
+//     console.log(feat);
+
+//     featured.innerHTML = "";
+
+//     featured.forEach(function (data) {
+//       featured.innerHTML += `<h3>${data.title}</h3>
+//                               <p>${data.featured}</p>`;
+//     });
+//   } catch(error) {
+//     console.log(error);
+//     // displayMessage("error", error, ".featured-products");
+//   }
+// }
+
+// featureProds();
