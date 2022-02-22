@@ -33,7 +33,10 @@ function createHtml(products) {
      </a>
      </div>
      <p>Price: ${prods.price}</p>
+     <details>
+     <summary> More info </summary>
      <p>${prods.description}</p>
+     </details>
     </div>
     
     `

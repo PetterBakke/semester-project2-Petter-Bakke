@@ -12,6 +12,8 @@ async function getHero() {
     const home = await response.json();
     console.log(home);
 
+    
+
     container.innerHTML = "";
     
     container.innerHTML += `<div class="header">
@@ -47,3 +49,12 @@ getHero();
 // }
 
 // featureProds();
+
+function createHtml(feat) {
+  let featured = "";
+  if(feat.products.featured === true){
+    featured.innerHTML += `<h4>${feat.products.title}</h4>
+    <p> Price: ${feat.products.price}</p>`;
+  }
+}
+createHtml(getHero);
