@@ -3,49 +3,88 @@
 }
 
 body {
-  background-color: lightgrey;
+  // background-color: lightgrey;
+  background-color: #f0f0f0;
   margin: 0;
   max-width: 100%;
   max-height: 100%;
 }
 
-nav ul li {
-  list-style: none;
-  display: inline;
+footer {
+  max-height: 100%;
+  max-width: 100%;
+  background-color: rgb(255, 212, 162);
+  border: 2px solid black;
+}
+
+.footer-logo {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  left: 10px;
+  top: 1px;
+}
+
+// nav {
+//   margin-top: 75px;
+// }
+
+nav a.active {
+  text-decoration: underline;
+  color: darkblue;
 }
 
 /* index page */
-.logodiv {
-  width: 100%;
-  height: 100%;
-}
 .logo {
-  width: 200px;
-  height: 200px;
+  height: 100px;
+  width: auto;
+  position: absolute;
+  left: 10px;
+  top: 20px;
 }
 
 .hero {
   width: 100%;
-  height: 100%;
-}
-
-.header {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
+  height: 50vh;
 }
 
 .hero-banner {
   width: 100%;
-  height: 300px;
-
-  /* position: relative; */
+  height: 100%;
+  background-size: cover;
+  background-position: 40% center;
 }
 
 .featured-products {
-  width: 600px;
-  height: 600px;
-  border: 5px solid black;
+  // width: 600px;
+  // margin: auto;
+  display: flex;
+  justify-content: space-around; //space-between
+
+}
+
+.featured-cards {
+  // width: 600px;
+  // height: 600px;
+  // border: 5px solid black;
+  flex: 1;
+  padding: 0;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: lightgray 4px 4px 5px;
+  text-align: center;
+}
+
+.featured-heading {
+  text-decoration: underline;
+  font-size: 3rem;
+}
+
+.featImg {
+  width: 250px;
+  height: 250px;
+  padding: 0;
+  margin: 0;
 }
 
 // product page
@@ -75,14 +114,20 @@ nav ul li {
 .cards {
   height: 100%;
   width: 100%;
-  border: 10px solid black;
-  border-radius: 0px 15px 0px 15px;
+  border: 5px solid black;
+  border-radius: 20px 20px 20px 20px;
   padding: 0;
+  margin: 10px;
   margin-top: 10px;
-  text-align: left;
+  text-align: center;
   padding: 5px;
   flex: 1 1 600px;
   // flex-wrap: wrap;
+}
+
+.search {
+  margin: 10px;
+  margin-top: 90px;
 }
 
 details {
@@ -93,22 +138,23 @@ details {
 
 summary {
   font-weight: bold;
-  margin: -.5em -.5em 0;
-  padding: .5em;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
 }
 
 details[open] {
-  padding: .5em;
+  padding: 0.5em;
 }
 
 details[open] summary {
   border-bottom: 1px solid #aaa;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .div-pic {
   max-width: 100%;
   max-height: 100%;
+
 }
 
 .prodImg {
@@ -116,6 +162,10 @@ details[open] summary {
   height: 200px;
   padding: 0;
   margin: 0;
+}
+
+.cart-icon {
+  margin-left: 30px;
 }
 
 h3 {
