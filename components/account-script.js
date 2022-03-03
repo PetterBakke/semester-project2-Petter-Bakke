@@ -1,4 +1,4 @@
-import {displayMessage} from "../components/displayMessage.js";
+import { displayMessage } from "../components/displayMessage.js";
 import { saveToken } from "../utility/storage.js";
 import { saveUser } from "../utility/storage.js";
 import { baseUrl } from "./baseUrl.js";
@@ -8,7 +8,21 @@ const username = document.querySelector("#Username");
 const password = document.querySelector("#Password");
 const message = document.querySelector(".message-container");
 
-form.addEventListener("submit" , submitForm);
+
+
+import { getFromStorage } from "../utility/storage.js";
+
+let usr = getFromStorage("user")
+if (typeof usr === 'object') {
+  if (usr.id) {
+    location.href = "/admin.html";
+  }
+}
+
+
+
+
+form.addEventListener("submit", submitForm);
 
 function submitForm(event) {
   event.preventDefault();
@@ -18,17 +32,19 @@ function submitForm(event) {
   const usernameValue = username.value.trim();
   const passwordValue = password.value.trim();
 
-  if(usernameValue.length === 0 || passwordValue.length === 0) {
+  if (usernameValue.length === 0 || passwordValue.length === 0) {
     displayMessage("warning", "Invalid values", ".message-container");
+    return;
   }
 
   doLogin(usernameValue, passwordValue)
+
 }
 
 async function doLogin(username, password) {
-  const url = `${baseUrl}auth/local`;
+  const url = `${baseUrl}/auth/local`;
 
-  const data = JSON.stringify({identifier: username, password: password});
+  const data = JSON.stringify({ identifier: username, password: password });
 
   const options = {
     method: "POST",
@@ -42,21 +58,21 @@ async function doLogin(username, password) {
     const response = await fetch(url, options);
     const json = await response.json();
 
-    if(json.user) {
+    if (json.user) {
       displayMessage("Success", "Successfully logged in", ".message-container")
 
       saveToken(json.jwt);
       saveUser(json.user);
 
-      location.href = "/";
+      location.href = "/admin.html";
     }
 
-    if(json.error) {
+    if (json.error) {
       displayMessage("warning", "Invalid login details", ".message-container");
     }
 
     console.log(json);
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 };

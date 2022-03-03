@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/11558dadcd.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/11558dadcd.js" crossorigin="anonymous"></script>
     <link
       rel="icon"
       type="image/png"
@@ -34,29 +31,38 @@
     <header class="hero">
       <img
         src="img/shoeslogo.png"
-        class="logo"
+        class="home-logo"
         alt="this is the website's logo. It says urbanshoes"
       />
       <div class="hero-banner"></div>
     </header>
 
     <nav class="nav justify-content-end">
-      <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-      <a class="nav-link" href="products-list.html">Products</a>
-      <a class="nav-link" href="account.html">My account</a>
+      <a class="nav-link active" aria-current="page" href="index.html">
+        <i class="fa-solid fa-house"></i>
+        <!-- Home -->
+      </a>
+      <a class="nav-link" href="products-list.html">
+        <i class="fa-solid fa-shoe"></i>
+        <!-- Products -->
+      </a>
+      <a class="nav-link" href="cart.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+      <a class="nav-link" href="account.html">| Log in</a>
     </nav>
 
     <div class="featured-products"></div>
 
-    <footer class="text-center text-white fixed-bottom">
+    <footer class="text-center text-white">
       <div class="container p-4"></div>
 
       <img src="img/shoeslogo.png" class="footer-logo" />
 
       <div class="text-center p-3">
         <a href="index.html">Home</a>
-        <a href="products-list.html">Products</a>
-        <a href="account.html">My account</a>
+        <a href="products-list.html"><i class="fa-brands fa-product-hunt"></i></a>
+        <a href="account.html">Login</a>
       </div>
     </footer>
     <script src="js/index-script.js" type="module"></script>

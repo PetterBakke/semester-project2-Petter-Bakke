@@ -20,7 +20,6 @@ footer {
 .footer-logo {
   height: 100px;
   width: auto;
-  position: absolute;
   left: 10px;
   top: 1px;
 }
@@ -35,12 +34,13 @@ nav a.active {
 }
 
 /* index page */
-.logo {
+.home-logo {
   height: 100px;
   width: auto;
-  position: absolute;
   left: 10px;
-  top: 20px;
+  top: 1px;
+  float: left;
+
 }
 
 .hero {
@@ -53,6 +53,7 @@ nav a.active {
   height: 100%;
   background-size: cover;
   background-position: 40% center;
+  border-bottom: 10px solid black;
 }
 
 .featured-products {
@@ -72,6 +73,7 @@ nav a.active {
   margin: 10px;
   border-radius: 5px;
   box-shadow: lightgray 4px 4px 5px;
+
   text-align: center;
 }
 
@@ -158,10 +160,9 @@ details[open] summary {
 }
 
 .prodImg {
-  width: 200px;
+  width: 100%;
   height: 200px;
-  padding: 0;
-  margin: 0;
+  object-fit: cover;
 }
 
 .cart-icon {
@@ -183,4 +184,47 @@ p {
   color: red;
   font-size: 1em;
   margin-top: 2px;
+}
+
+
+// admin
+
+.admin{
+
+
+
+  .card {
+    width: 300px;
+    // border: 1px solid black;
+    box-shadow: lightgray 4px 4px 6px;
+    border-radius: 10px;
+  }
+  
+  .addbtn {
+    background-color: green;
+    width: 150px;
+    height: 40px;
+    margin: 10px;
+  }
+  .logOut {
+    width: 150px;
+    height: 40px;
+    float: right;
+    margin: 10px;
+  }
+  
+  .heading-admin {
+    color: red;
+    text-align: center;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .btn-save{
+    margin: 5px;
+  }
 }
