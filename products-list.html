@@ -30,37 +30,48 @@
     <title>URBANSHOES | Products</title>
   </head>
   <header>
-    <img
-      src="img/shoeslogo.png "
-      class="logo"
-      alt="This is the logo of the company. It says Urbanshoes"
-    />
+    <a href="index.html">
+      <img
+         src="img/shoeslogo.png"
+         class="shoe-logo"
+         alt="this is the website's logo. It says urbanshoes"
+       />
+    </a> 
   </header>
-  <nav class="nav justify-content-end">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link active" aria-current="page" href="products-list.html"
-      >Products</a
+  <nav class="nav justify-content-end navbar">
+    <a class="nav-link" href="index.html">
+      <img src="https://img.icons8.com/material-rounded/24/000000/home.png"/>Home</a>
+    <a class="nav-link active" aria-current="page" href="#"
+      >
+      <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/24/000000/external-shoes-cyber-monday-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/>Products</a
     >
     <a class="nav-link" href="cart.html"
-      ><i class="fa-solid fa-cart-shopping"></i
-    ></a>
+      ><img src="https://img.icons8.com/external-those-icons-fill-those-icons/24/000000/external-shopping-cart-shopping-those-icons-fill-those-icons.png"/>Cart</a>
     <a class="nav-link" href="account.html">| Login</a>
   </nav>
-  <body>
+  <body class="product-list">
     <input type="search" class="search" placeholder="Search here..." />
     <!-- <button class="search-button">Search</button> -->
 
-    <div class="product-container"></div>
+    <h2>Products</h2>
+    <div class="product-container">
+    </div>
 
     <footer class="text-center text-white">
       <div class="container p-4"></div>
 
-      <img src="img/shoeslogo.png" class="footer-logo" />
+      <a href="index.html">
+        <img
+           src="img/shoeslogo.png"
+           class="footer-logo"
+           alt="this is the website's logo. It says urbanshoes"
+         />
+      </a> 
 
       <div class="text-center p-3">
-        <a href="index.html">Home</a>
-        <a href="products-list.html">Products</a>
-        <a href="account.html">Log in</a>
+        <a href="index.html"><img src="https://img.icons8.com/material-rounded/24/000000/home.png"/></a>
+        <a href="products-list.html"> <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/24/000000/external-shoes-cyber-monday-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/></a>
+        <a href="account.html">| Log in</a>
       </div>
     </footer>
     <script src="js/products-list.js" type="module"></script>

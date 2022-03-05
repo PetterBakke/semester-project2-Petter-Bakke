@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/11558dadcd.js" crossorigin="anonymous"></script>
     <link
       rel="icon"
       type="image/png"
@@ -27,27 +26,30 @@
     <link href="css/style.css" rel="stylesheet" />
     <title>URBANSHOES | Home</title>
   </head>
-  <body>
+  <body class="index-page">
     <header class="hero">
-      <img
-        src="img/shoeslogo.png"
-        class="home-logo"
-        alt="this is the website's logo. It says urbanshoes"
-      />
+     <a href="index.html">
+       <img
+          src="img/shoeslogo.png"
+          class="shoe-logo"
+          alt="this is the website's logo. It says urbanshoes"
+        />
+     </a> 
       <div class="hero-banner"></div>
     </header>
 
-    <nav class="nav justify-content-end">
-      <a class="nav-link active" aria-current="page" href="index.html">
-        <i class="fa-solid fa-house"></i>
-        <!-- Home -->
+    <nav class="nav justify-content-end navbar">
+      <a class="nav-link active" aria-current="page" href="#">
+        <img src="https://img.icons8.com/material-rounded/24/000000/home.png" class="nav-icons"/>
+        Home
       </a>
       <a class="nav-link" href="products-list.html">
-        <i class="fa-solid fa-shoe"></i>
-        <!-- Products -->
+        <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/24/000000/external-shoes-cyber-monday-vitaliy-gorbachev-fill-vitaly-gorbachev.png" class="nav-icons"/>
+        Products
       </a>
       <a class="nav-link" href="cart.html">
-        <i class="fa-solid fa-cart-shopping"></i>
+        <img src="https://img.icons8.com/external-those-icons-fill-those-icons/24/000000/external-shopping-cart-shopping-those-icons-fill-those-icons.png" class="nav-icons"/>
+        Cart
       </a>
       <a class="nav-link" href="account.html">| Log in</a>
     </nav>
@@ -57,12 +59,18 @@
     <footer class="text-center text-white">
       <div class="container p-4"></div>
 
-      <img src="img/shoeslogo.png" class="footer-logo" />
+      <a href="index.html">
+        <img
+           src="img/shoeslogo.png"
+           class="footer-logo"
+           alt="this is the website's logo. It says urbanshoes"
+         />
+      </a> 
 
       <div class="text-center p-3">
-        <a href="index.html">Home</a>
-        <a href="products-list.html"><i class="fa-brands fa-product-hunt"></i></a>
-        <a href="account.html">Login</a>
+        <a href="index.html"><img src="https://img.icons8.com/material-rounded/24/000000/home.png"/></a>
+        <a href="products-list.html"> <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/24/000000/external-shoes-cyber-monday-vitaliy-gorbachev-fill-vitaly-gorbachev.png"/></a>
+        <a href="account.html">| Log in</a>
       </div>
     </footer>
     <script src="js/index-script.js" type="module"></script>

@@ -26,11 +26,13 @@
     <title>URBANSHOES | Admin page</title>
   </head>
   <body class="admin">
-    <img
-      src="img/shoeslogo.png"
-      alt="this is the logo of the company. Urbanshoes"
-      class="home-logo"
-    />
+    <a href="index.html">
+      <img
+         src="img/shoeslogo.png"
+         class="shoe-logo"
+         alt="this is the website's logo. It says urbanshoes"
+       />
+    </a> 
     <button type="button" class="btn btn-primary logOut">Log out</button>
     <div class="container">
       <h1 class="heading-admin">Add and edit</h1>
@@ -39,9 +41,9 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 admincards">
           
         </div>
-        <a href="#" class="btn btn-primary addbtn">Add +</a>
+        <a href="#" class="btn btn-primary addBtn">Add +</a>
         
-        <form class="add-edit-form" style="display: block">
+        <form class="add-edit-form" id="addproductform">
           <div class="mb-3">
             <label for="Title" class="form-label">Title</label>
             <input type="Title" class="form-control" id="Title" aria-describedby="Title"/>
