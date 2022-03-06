@@ -28,9 +28,15 @@ async function getProds() {
     createAdminHtml(products);
 
 
+    const saveBtns = document.querySelectorAll(".btn-save");
+    const delBtns = document.querySelectorAll(".btn-del");
+    saveBtns.forEach(saveBtn => saveBtn.addEventListener("click", handleSave));
+    delBtns.forEach(delBtn => delBtn.addEventListener("click", handleDel));
+
+
+
   } catch (error) {
     console.log(error);
-    displayMessage("error", error, ".product-container");
   }
 };
 getProds();
@@ -65,10 +71,10 @@ function createAdminHtml(products) {
         <div class="card-body">
           <h5 class="card-title">${prods.title}</h5>
           <p class="card-text">Price: ${prods.price}</p>
-          <label>Image URL:</label>
-          <input type="image-url" class= "form-control" id="imageurl" aria-describedby="imageurl"/>
-          <a href="#" class="btn btn-primary btn-save" data-id="${prods.id}" >Save new URL</a>
-          <a href="#" class="btn btn-danger btn-del" data-id="${prods.id}" onclick = `handleSave(${ id })`>Delete</a>
+          <label ${prods.id}>Image URL:</label>
+          <input type="image-url" class= "form-control" id="id${prods.id}" aria-describedby="imageurl"/>
+          <a href="#" class="btn btn-primary btn-save" data-id="${prods.id}">Save new URL</a>
+          <a href="#" class="btn btn-danger btn-del">Delete</a>
           <a ></a>
         </div>
       </div>
@@ -96,7 +102,7 @@ async function createProduct(title, price, featured, desc, image_url) {
 
   strapi_conn(data, "POST", url)
 };
-// updateProduct("Shoename",100,false,"Description", "imageurl")
+// createProduct("Shoename",100,false,"Description", "imageurl")
 
 
 async function updateProduct(id, image_url) {
@@ -149,32 +155,53 @@ async function strapi_conn(data, method, url) {
   }
 }
 
+
+
+
 const logOutBtn = document.querySelector(".logOut");
 logOutBtn.addEventListener("click", logOut);
 
 function logOut() {
+  console.log("Logging out...");
   loggingOut();
   container.innerHTML = "You are now successfully logged out";
+  location.href = "account.html"
 }
 
-const saveBtn = document.querySelectorAll(".btn-save");
-const delBtn = document.querySelectorAll(".btn-del");
 
-// saveBtn.addEventListener(event);
-
-// function saveChanges(event) {
-// event.target.dataset.id;
-// }
-
-// delBtn.addEventListener(event);
 
 function handleSave(event) {
-  const deleteThisProduct = event.target.dataset.id;
+  const updateThisId = event.target.dataset.id;
 
-  deleteThisProduct.forEach(function (delBtn) {
-    delBtn.addEventListener("click", handleSave);
-  })
+  let url = document.querySelector(`#id${updateThisId}`).value;
+  console.log(`id: ${updateThisId} | url: ${url}`)
+  updateProduct(updateThisId, url);
+
+  // Confirmation of update
+
 }
 
 
-// onclick = `handleSave(${ id })`
+function handleDel(event) {
+  const deleteThisId = event.target.dataset.id;
+
+  let areYouSure = confirm("Are you sure you want to delete this product?");
+  if (areYouSure) {
+    console.log(deleteThisId);
+    // deleteProduct(deleteThisId);
+
+    // Refresh page or confirmation of deletion
+  }
+}
+
+const addButton = document.querySelector(".addBtn");
+
+addButton.addEventListener('click', () => {
+  const form = document.querySelector(".add-edit-form");
+  
+  if ( form.style.display === 'none') {
+    form.style.display = 'block';
+  } else {
+    form.style.display = 'none';
+  }
+});
