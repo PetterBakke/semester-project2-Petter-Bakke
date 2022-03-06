@@ -5,63 +5,83 @@ const searchButton = document.querySelector(".search-button");
 const container = document.querySelector(".product-container");
 
 
-async function getProds() {
+async function getProds(searchInput) {
 
   try {
-    const response = await fetch(productsUrl);
+    const searchUrl = productsUrl + `?title_contains=${searchInput}`;
+    const response = await fetch(searchUrl);
     const products = await response.json();
+    container.innerHTML = "";
     createHtml(products);
 
-  } catch(error) {
+    const addToCartBtns = document.querySelectorAll(".addCartBtn");
+    addToCartBtns.forEach(addToCartBtn => addToCartBtn.addEventListener("click", handleAddToCart));
+
+  } catch (error) {
     console.log(error);
     displayMessage("error", error, ".product-container");
   }
 };
 
-getProds();
+getProds("");
+
 
 
 function createHtml(products) {
+
   products.forEach(prods => {
+
+    let prodsimage = prods.image ? `${baseUrl}${prods.image.url}` : prods.image_url;
+
     container.innerHTML += `
+  
+    <div class="cards" data-id="${prods.id}">
+    <h3>${prods.title}</h3>
     
-    <div class="cards">
-     <h3>${prods.title}</h3>
-     <div class="div-pic">
-     <a href="/products-details.html">
-     <img src="${baseUrl}${prods.image.url}" class="prodImg" alt="${prods.title}">
-     </a>
-     </div>
-     <p>Price: ${prods.price}</p>
-     <details>
-     <summary> More info </summary>
-     <p>${prods.description}</p>
-     </details>
+    <a href="/products-details.html">
+    <img src="${prodsimage}" class="prodImg" alt="${prods.title}">
+    </a>
+    
+    <p>Price: ${prods.price}
+    <span class="addCartBtn"><i class="fa-solid fa-cart-plus" data-id=${prods.id}></i></span>
+    
+    </p>
+    <details>
+    <summary> More info </summary>
+    <p>${prods.description}</p>
+    </details>
     </div>
-    
     `
   })
 };
 
-searchButton.onclick = function() {
-  const searchInput = document.querySelector(".search").value;
-  getProds(searchInput);
-}
-
-
-
-
-
-// container.innerHTML = "";
-
-//     products.forEach(function (data) {
-//       container.innerHTML += `<div class="cards"><h3>${data.title}</h3>
-//                               <a href="/products-details.html">
-//                               <img src="${baseUrl}${data.image.url}" class="prodImg" alt="${data.title}">
-//                               </a>
-//                               <p>Price: ${data.price}</p>
-//                               <p>${data.description}</p>
-//                               </div>`;
-//     });
-//   }
+// searchButton.onclick = function() {
+//   const searchInput = document.querySelector(".search").value;
+//   console.log(searchInput);
+//   getProds(searchInput);
 // }
+
+const searchInput = document.querySelector(".search");
+
+function filterOnChange(e) {
+  console.log(e.target.value);
+  getProds(e.target.value);
+}
+searchInput.addEventListener('input', filterOnChange);
+
+
+
+
+function handleAddToCart(e) {
+  let addToCartId = e.target.dataset.id;
+
+  if (localStorage.getItem("shoppingcart") === null) {
+    console.log("Creating a shoppingcart key in localstorage");
+    localStorage.setItem('shoppingcart', JSON.stringify([]));
+  }
+  console.log("Adding product to cart");
+  let cartitems = JSON.parse(localStorage.getItem('shoppingcart'));
+  cartitems.push(addToCartId);
+  localStorage.setItem('shoppingcart', JSON.stringify(cartitems));
+
+}

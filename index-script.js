@@ -5,20 +5,14 @@ const featureUrl = baseUrl + "/products";
 
 async function getHero() {
   // const featured = document.querySelector(".featured-products");
-  const container = document.querySelector(".hero");
+  const container = document.querySelector(".hero-banner");
 
   try {
     const response = await fetch(heroUrl);
     const home = await response.json();
-    console.log(home);
-
+    // console.log(home);
     
-
-    container.innerHTML = "";
-    
-    container.innerHTML += `<div class="header">
-    <img src="${baseUrl}${home.hero_banner.url}" class="hero-banner" alt="${home.hero_banner_alt_text}">
-    </div>`;
+    container.style.backgroundImage = `url('${baseUrl}${home.hero_banner.url}')`;
     
   } catch(error) {
     console.log(error);
@@ -28,33 +22,37 @@ async function getHero() {
 
 getHero();
 
-// async function featureProds() {
-//   const featured = document.querySelector(".featured-products");
+async function featureProds() {
+  const featured = document.querySelector(".featured-products");
 
-//   try {
-//     const response = await fetch(featureUrl);
-//     const feat = await response.json();
-//     console.log(feat);
+  try {
+    const response = await fetch(`${featureUrl}?featured=true`);
+    const feat = await response.json();
+    console.log(feat);
 
-//     featured.innerHTML = "";
+    feat.forEach(function (data) {
+      
+      featured.innerHTML += createHtml(data);
 
-//     featured.forEach(function (data) {
-//       featured.innerHTML += `<h3>${data.title}</h3>
-//                               <p>${data.featured}</p>`;
-//     });
-//   } catch(error) {
-//     console.log(error);
-//     // displayMessage("error", error, ".featured-products");
-//   }
-// }
+    });
 
-// featureProds();
 
-function createHtml(feat) {
-  let featured = "";
-  if(feat.products.featured === true){
-    featured.innerHTML += `<h4>${feat.products.title}</h4>
-    <p> Price: ${feat.products.price}</p>`;
+  } catch(error) {
+    console.log(error);
+    displayMessage("error", error, ".featured-products");
   }
 }
-createHtml(getHero);
+
+featureProds();
+
+
+function createHtml(data) {
+  let temp = `<div class="featured-cards">
+  <h3 class="featured-heading">Featured products</h3>
+  <h4>${data.title}</h4>
+  <img class="featImg" src="${baseUrl}${data.image.url}">
+  <p> Price: ${data.price}</p>
+  </div>`;
+
+  return temp
+}
